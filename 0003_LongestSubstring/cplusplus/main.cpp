@@ -7,7 +7,7 @@ int main()
 {
     std::cout << "0003. Longest Substring Without Repeating Characters" << std::endl;
 
-    std::string checkingString{"pwwkew"};
+    std::string checkingString{"ABCADEFG"};
 
     std::cout << "\nInput params:" << std::endl;
     std::cout << "\t1) string : " << checkingString << std::endl;

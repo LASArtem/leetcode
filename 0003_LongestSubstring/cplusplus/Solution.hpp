@@ -6,11 +6,13 @@ class Solution {
 public:
     Solution();
 
-    int lengthOfLongestSubstring(std::string s);
+    int lengthOfLongestSubstring(const std::string&);
     std::string getLongestSubstring() const;
 
 private:
-    bool isUniqueChars(std::string s) const;
+    void saveUniqueString(const std::string& s, const size_t startPos, const size_t finishPos);
 
     std::string mLongestSubstring;
+    std::string mUniqueSubstring;
+    uint8_t mTabCounter;
 };

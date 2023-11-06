@@ -5,33 +5,31 @@
 
 Solution::Solution()
     : mLongestSubstring{}
+    , mTabCounter{0U}
 {
 }
 
-int Solution::lengthOfLongestSubstring(std::string s)
+int Solution::lengthOfLongestSubstring(const std::string& s)
 {
-    uint32_t counter = 0UL;
-    do {
-        ++counter;
-        char testedChar = s.front();
-        const auto repeatPos = s.find(testedChar, 1);
-        const std::string substring = s.substr(0, repeatPos);
-        if (mLongestSubstring.size() < substring.size()) {
-            std::cout << "\nChar_" << counter << ":" << std::endl;
-            std::cout << "Char:" << testedChar << "; substring: " << substring << std::endl;
-
-            const bool isUnique = isUniqueChars(substring);
-
-            if (isUnique) {
-                std::cout << "\"" << substring
-                          << "\" does not contains repeated characters. It was saved !!!"
-                          << std::endl;
-                mLongestSubstring = substring;
+    if (!s.empty()) {
+        uint32_t counter = 0UL;
+        size_t startPos = 0UL;
+        do {
+            ++counter;
+            std::cout << "\nChar_" << counter << std::endl;
+            mTabCounter = 0U;
+            mUniqueSubstring.clear();
+            saveUniqueString(s, startPos, s.size());
+            if (mLongestSubstring.size() < mUniqueSubstring.size()) {
+                std::cout << "mUniqueSubstring[" << mUniqueSubstring.size()
+                          << "]: " << mUniqueSubstring << std::endl;
+                mLongestSubstring = mUniqueSubstring;
+            } else {
+                std::cout << std::endl;
             }
-        }
-        s = s.substr(1);
-    } while (s.size() > mLongestSubstring.size());
-
+            ++startPos;
+        } while (s.size() > (startPos + mLongestSubstring.size()));
+    }
     return mLongestSubstring.size();
 }
 
@@ -40,17 +38,25 @@ std::string Solution::getLongestSubstring() const
     return mLongestSubstring;
 }
 
-bool Solution::isUniqueChars(std::string s) const
+void Solution::saveUniqueString(const std::string& s, const size_t startPos, const size_t finishPos)
 {
-    do {
-        const char checkedChar = s.front();
-        s = s.substr(1);
-        if (std::string::npos != s.find(checkedChar)) {
-            std::cout << "\tisUniqueChars: " << checkedChar << " is FOUND second time in \"" << s
-                      << "\"" << std::endl;
-            break;
-        }
-    } while (!s.empty());
+    ++mTabCounter;
+    for (uint8_t i = 0UL; i < mTabCounter; ++i) {
+        std::cout << "\t";
+    }
+    std::cout << "getUniqueString: [" << startPos << ":" << finishPos << "]" << s;
 
-    return s.empty();
+    // if (s[startPos] == mUniqueSubstring[mUniqueSubstring.size() - 1UL] || startPos > finishPos) {
+    if (startPos >= finishPos) {
+        std::cout << std::endl;
+    } else {
+        char checkedChar = s[startPos];
+        const auto repeatPos = s.find(checkedChar, startPos + 1);
+        const auto newFinishPos
+            = (repeatPos == std::string::npos) ? finishPos : std::min(repeatPos, finishPos);
+        mUniqueSubstring.push_back(checkedChar);
+        std::cout << "; checkedChar=" << checkedChar << "; repeatPos=" << repeatPos
+                  << "; mUniqueSubstring=" << mUniqueSubstring << std::endl;
+        saveUniqueString(s, startPos + 1UL, newFinishPos);
+    }
 }
