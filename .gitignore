@@ -1,0 +1,83 @@
+# Project specific section:
+# -------------------------
+# Build directory:
+build/
+bin_host/
+bin_target/
+build_host/
+build_target/
+
+# С/C++ common specific section:
+# -----------------------------
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Logs
+*.log
+
+# CMake specific section:
+# -----------------------
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+#idea IDE
+*.idea/
+
+#VS Code IDE
+*.vscode
+
+#python tests
+**.cache/
+**.pytest_cache/
+**__pycache__/
+.flake8
+
+src/tests/integration_test/main.log
+scripts/main.log
+scripts/player_console.log
+src/tests/integration_test/player_console.log
+
+#sym links
+./src/OnlinePlayer/src/OnlinePlayerService/private/adapters
+
+#core file
+core
+
+#QT IDE
+.qt/
+CMakeLists.txt.user.2
