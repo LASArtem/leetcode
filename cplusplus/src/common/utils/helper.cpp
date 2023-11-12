@@ -1,6 +1,6 @@
 #include "helper.hpp"
 
-namespace helper {
+namespace common::utils::helper {
 
 std::string vectorToString(const std::vector<int>& v, size_t elNumber)
 {
@@ -42,4 +42,4 @@ std::string listToString(const std::list<int>& l, size_t elNumber)
     return result;
 }
 
-} // namespace helper
+} // namespace common::utils::helper

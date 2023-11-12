@@ -5,16 +5,22 @@ echo "Script location: ${BASEDIR}"
 cd ${BASEDIR}
 
 # default value
+TASK_NUMBER=0
+CLEAN_BUILD=FALSE
 THREADS_COUNT=$(grep -c ^processor /proc/cpuinfo)
 
 for i in "$@"; do
     case $i in
+    -t=*|--task=*) TASK_NUMBER="${i#*=}";;
+    -c | --clean-build) CLEAN_BUILD=TRUE ;;
     -j1 | --set-1-threads) THREADS_COUNT=1 ;;
     -j2 | --set-2-threads) THREADS_COUNT=2 ;;
     -j4 | --set-4-threads) THREADS_COUNT=4 ;;
     -j8 | --set-8-threads) THREADS_COUNT=8 ;;
     -jx | --set-max-threads) THREADS_COUNT=$(grep -c ^processor /proc/cpuinfo) ;;
     -h | --help | -?) echo "Use keys:
+                -t=|--task=                         - number of task
+                -c|--clean-build                    - remove the build folder
                 -j1|--set-1-threads                 - Compile binaries with 1 threads
                 -j2|--set-2-threads                 - Compile binaries with 2 threads
                 -j4|--set-4-threads                 - Compile binaries with 4 threads
@@ -47,7 +53,7 @@ echo -e "=================================="
 echo -e "Programm is executed:"
 echo -e "=================================="
 START=$(date +%N)
-${BASEDIR}/build/Solution*
+${BASEDIR}/build/LeetCode_Solutions ${TASK_NUMBER}
 END=$(date +%N)
 DIFF=$(echo "$END - $START" | bc)
 echo -e "=================================="
