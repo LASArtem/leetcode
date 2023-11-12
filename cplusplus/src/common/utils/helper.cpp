@@ -19,6 +19,23 @@ std::string vectorToString(const std::vector<int>& v, size_t elNumber)
     return result;
 }
 
+std::string vectorToString(const std::vector<std::vector<int>>& v, size_t elNumber)
+{
+    const auto addedElements = (0 == elNumber) ? v.size() : std::min(elNumber, v.size());
+
+    std::string result{"{"};
+    if (!v.empty()) {
+        result.append(vectorToString(v[0UL], elNumber));
+        for (auto i = 1UL; i < addedElements; ++i) {
+            result.append(", ");
+            result.append(vectorToString(v[i], elNumber));
+        }
+    }
+    result.append("}");
+
+    return result;
+}
+
 std::string listToString(const std::list<int>& l, size_t elNumber)
 {
     const auto addedElements = (0 == elNumber) ? l.size() : std::min(elNumber, l.size());

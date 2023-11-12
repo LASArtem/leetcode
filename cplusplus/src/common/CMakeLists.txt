@@ -1,8 +1,8 @@
 set(TARGET Common)
 
 set(RELEASE_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/utils/dumper.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/utils/helper.cpp
+    #${CMAKE_CURRENT_SOURCE_DIR}/utils/STDDumper.cpp
 )
 
 # set includes
