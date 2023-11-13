@@ -1,12 +1,13 @@
 #include "Solution0003.hpp"
 
+#include <utils/helper.hpp>
+
 #include <algorithm>
 #include <iostream>
+#include <vector>
 
 Solution0003::Solution0003()
     : ISolution{}
-    , mLongestSubstring{}
-    , mTabCounter{0U}
 {
 }
 
@@ -22,66 +23,35 @@ void Solution0003::describeIssue() const
 
 void Solution0003::run()
 {
-    std::string checkingString{"ABCADEFG"};
+    std::string checkingString{"abcabcdab"};
 
     std::cout << "\nInput params:" << std::endl;
     std::cout << "\t1) string : " << checkingString << std::endl;
 
     const int maxLength = lengthOfLongestSubstring(checkingString);
-
-    std::cout << "\nThe substring is: " << getLongestSubstring() << std::endl;
     std::cout << "The length is   : " << maxLength << std::endl;
 }
 
 int Solution0003::lengthOfLongestSubstring(const std::string& s)
 {
+    int longestSubstringSize = 0;
     if (!s.empty()) {
-        uint32_t counter = 0UL;
-        size_t startPos = 0UL;
+        std::vector<int> letterIndexes(255, -1);
+
+        const size_t length = s.size();
+        int i = 0;
+        int startIndexOfSubsctring = 0;
+
         do {
-            ++counter;
-            std::cout << "\nChar_" << counter << std::endl;
-            mTabCounter = 0U;
-            mUniqueSubstring.clear();
-            saveUniqueString(s, startPos, s.size());
-            if (mLongestSubstring.size() < mUniqueSubstring.size()) {
-                std::cout << "mUniqueSubstring[" << mUniqueSubstring.size()
-                          << "]: " << mUniqueSubstring << std::endl;
-                mLongestSubstring = mUniqueSubstring;
-            } else {
-                std::cout << std::endl;
+            const auto letter = s[i];
+            if (letterIndexes[letter] >= startIndexOfSubsctring) {
+                startIndexOfSubsctring = letterIndexes[letter] + 1;
             }
-            ++startPos;
-        } while (s.size() > (startPos + mLongestSubstring.size()));
-    }
-    return mLongestSubstring.size();
-}
+            letterIndexes[letter] = i;
 
-std::string Solution0003::getLongestSubstring() const
-{
-    return mLongestSubstring;
-}
-
-void Solution0003::saveUniqueString(
-    const std::string& s, const size_t startPos, const size_t finishPos)
-{
-    ++mTabCounter;
-    for (uint8_t i = 0UL; i < mTabCounter; ++i) {
-        std::cout << "\t";
+            longestSubstringSize = std::max(longestSubstringSize, i - startIndexOfSubsctring + 1);
+            ++i;
+        } while (i < length);
     }
-    std::cout << "getUniqueString: [" << startPos << ":" << finishPos << "]" << s;
-
-    // if (s[startPos] == mUniqueSubstring[mUniqueSubstring.size() - 1UL] || startPos > finishPos) {
-    if (startPos >= finishPos) {
-        std::cout << std::endl;
-    } else {
-        char checkedChar = s[startPos];
-        const auto repeatPos = s.find(checkedChar, startPos + 1);
-        const auto newFinishPos
-            = (repeatPos == std::string::npos) ? finishPos : std::min(repeatPos, finishPos);
-        mUniqueSubstring.push_back(checkedChar);
-        std::cout << "; checkedChar=" << checkedChar << "; repeatPos=" << repeatPos
-                  << "; mUniqueSubstring=" << mUniqueSubstring << std::endl;
-        saveUniqueString(s, startPos + 1UL, newFinishPos);
-    }
+    return longestSubstringSize;
 }
