@@ -3,6 +3,7 @@ set(TARGET Solutions)
 set(RELEASE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0002.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0003.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Solution0005.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0149.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution1535.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/SolutionDefault.cpp
