@@ -18,12 +18,13 @@ bool Solution0005::isReady() const
 
 void Solution0005::describeIssue() const
 {
-    std::cout << "[Issue 0003] Longest Substring Without Repeating Characters" << std::endl;
+    std::cout << "[Issue 0005] Longest Palindromic Substring" << std::endl;
 }
 
 void Solution0005::run()
 {
-    std::string checkingString{"babad"};
+    std::string checkingString{"123bbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                               "aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbb321"};
 
     std::cout << "\nInput params:" << std::endl;
     std::cout << "\t1) string : " << checkingString << std::endl;
@@ -67,7 +68,8 @@ std::string Solution0005::longestPalindrome(const std::string& s)
         }
 
         endPalindromeIndex -= 1;
-        if (startPalindromeIndex >= endPalindromeIndex) {
+        if ((startPalindromeIndex >= endPalindromeIndex)
+            || (palindrome.size() > endPalindromeIndex - startPalindromeIndex + 1)) {
             ++startPalindromeIndex;
             startPalindromeChar = s[startPalindromeIndex];
             endPalindromeIndex = size - 1;
