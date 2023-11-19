@@ -46,6 +46,12 @@ public:
     void describeIssue() const override;
     void run() override;
 
+    // Debuggable
+    inline std::string buildPrefix() const override
+    {
+        return ISolution::buildPrefix() + "1535]";
+    }
+
 private:
     int getWinner(std::vector<int>& arr, int k) const;
     void moveSecondToEnd(std::list<int>& participants) const;

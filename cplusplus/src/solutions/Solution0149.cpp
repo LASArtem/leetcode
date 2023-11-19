@@ -1,7 +1,5 @@
 #include "Solution0149.hpp"
 
-#include <utils/helper.hpp>
-
 #include <iostream>
 #include <list>
 #include <map>
@@ -18,19 +16,18 @@ bool Solution0149::isReady() const
 
 void Solution0149::describeIssue() const
 {
-    std::cout << "[Issue 0149] Max Points on a Line" << std::endl;
+    logWarn() << "Max Points on a Line";
 }
 
 void Solution0149::run()
 {
     std::vector<std::vector<int>> points{{4, 5}, {4, -1}, {4, 0}};
 
-    std::cout << "\nInput params:" << std::endl;
-    std::cout << "\tpoints: " << common::utils::helper::vectorToString(points) << std::endl;
+    logDebug() << "Input params:";
+    logDebug() << "      points: " << points;
 
     const int pointNumberAtLine = maxPoints(points);
-
-    std::cout << "pointNumberAtLine: " << pointNumberAtLine << std::endl;
+    logDebug() << "pointNumberAtLine: " << pointNumberAtLine;
 }
 
 int Solution0149::maxPoints(std::vector<std::vector<int>>& points)

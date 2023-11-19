@@ -14,8 +14,9 @@ add_subdirectory(src)
 set(SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
-set(RELEASE_LIBS Solutions)
+set(RELEASE_LIBS Solutions Logger)
 target_link_libraries(${PROJECT_NAME} ${RELEASE_LIBS})
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 message("TARGET          : ${TARGET}")
 message("SRC_FILES       : ${SRC_FILES}")

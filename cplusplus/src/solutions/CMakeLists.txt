@@ -1,6 +1,7 @@
 set(TARGET Solutions)
 
 set(RELEASE_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/ListNode.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0002.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0003.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0005.cpp
@@ -12,7 +13,7 @@ set(RELEASE_SOURCES
 )
 
 set(INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
-set(RELEASE_LIBS Common)
+set(RELEASE_LIBS Logger)
 
 add_library(${TARGET} STATIC)
 target_sources(${TARGET} PRIVATE ${RELEASE_SOURCES})

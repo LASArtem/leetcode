@@ -29,6 +29,12 @@ public:
     void describeIssue() const override;
     void run() override;
 
+    // Debuggable
+    inline std::string buildPrefix() const override
+    {
+        return ISolution::buildPrefix() + "0149]";
+    }
+
 private:
     // call method
     int maxPoints(std::vector<std::vector<int>>& points);

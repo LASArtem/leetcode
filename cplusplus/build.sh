@@ -35,10 +35,22 @@ if [ "${CLEAN_BUILD}" = TRUE ]; then
     rm -rf build
 fi
 
-echo "THREADS_COUNT=${THREADS_COUNT}"
 
+CMAKE_PARAMS=""
+
+#logOff = 0U,
+#logFatal = 1U,
+#logError = 2U,
+#logWarn = 3U,
+#logInfo = 4U,
+#logDebug = 5U,
+#logVerbose = 6U
+CMAKE_PARAMS+=" -DCMAKE_MAX_LOG_LEVEL=6"
+
+echo "CMAKE_PARAMS: ${CMAKE_PARAMS}"
+echo "THREADS_COUNT=${THREADS_COUNT}"
 mkdir -p build
-cmake -H. -Bbuild
+cmake -H. -Bbuild ${CMAKE_PARAMS}
 cd build
 cmake --build . --parallel ${THREADS_COUNT} --target all
 

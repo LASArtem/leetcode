@@ -1,7 +1,5 @@
 #include "Solution1535.hpp"
 
-#include <utils/helper.hpp>
-
 #include <algorithm>
 #include <iostream>
 
@@ -17,7 +15,7 @@ bool Solution1535::isReady() const
 
 void Solution1535::describeIssue() const
 {
-    std::cout << "[Issue 1535] Find the Winner of an Array Game" << std::endl;
+    logWarn() << "Find the Winner of an Array Game";
 }
 
 void Solution1535::run()
@@ -25,13 +23,13 @@ void Solution1535::run()
     std::vector<int> arr{1, 11, 22, 33, 44, 55, 66, 77, 88, 99};
     const int expectedWins = 1000;
 
-    std::cout << "\nInput params:" << std::endl;
-    std::cout << "\t1) arr : " << common::utils::helper::vectorToString(arr) << std::endl;
-    std::cout << "\t2) wins: " << expectedWins << std::endl;
+    logDebug() << "Input params:";
+    logDebug() << "     1) arr : " << arr;
+    logDebug() << "     2) wins: " << expectedWins;
 
     const int winner = getWinner(arr, expectedWins);
 
-    std::cout << "\nThe winner is: " << winner << std::endl;
+    logDebug() << "The winner is: " << winner;
 }
 
 int Solution1535::getWinner(std::vector<int>& arr, int k) const
@@ -50,7 +48,7 @@ int Solution1535::getWinner(std::vector<int>& arr, int k) const
         moveSecondToEnd(participants);
     } while (winCounter != k);
 
-    std::cout << "Solution1535::getWinner: winCounter=" << winCounter << std::endl;
+    logVerbose() << "winCounter=" << winCounter;
     return participants.front();
 }
 

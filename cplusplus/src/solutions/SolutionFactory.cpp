@@ -13,7 +13,7 @@ SolutionFactory::SolutionFactory()
 {
 }
 
-std::shared_ptr<ISolution> SolutionFactory::createSolution(const uint32_t taskNumber) const
+std::shared_ptr<ISolution> SolutionFactory::createSolution(const uint32_t taskNumber)
 {
     std::shared_ptr<ISolution> solution{nullptr};
     switch (taskNumber) {
@@ -40,5 +40,10 @@ std::shared_ptr<ISolution> SolutionFactory::createSolution(const uint32_t taskNu
         break;
     }
 
+    /*
+     * [leetcode][logger] fix crash at prefix linkage
+     * https://github.com/LASArtem/leetcode/issues/11
+     */
+    // solution->link(shared_from_this());
     return solution;
 }

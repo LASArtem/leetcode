@@ -1,7 +1,5 @@
 #include "Solution0002.hpp"
 
-#include <iostream>
-
 Solution0002::Solution0002()
     : ISolution()
 {
@@ -14,27 +12,20 @@ bool Solution0002::isReady() const
 
 void Solution0002::describeIssue() const
 {
-    std::cout << "[Issue 0002] Add Two Numbers" << std::endl;
+    logWarn() << "Add Two Numbers";
 }
 
 void Solution0002::run()
 {
     ListNode* listNumber1 = createList(9999999);
-    std::cout << "listNumber1: ";
-    printList(listNumber1);
-    std::cout << std::endl;
+    logDebug() << "listNumber1: " << listToString(listNumber1);
 
     ListNode* listNumber2 = createList(9999);
-    std::cout << "listNumber2: ";
-    printList(listNumber2);
-    std::cout << std::endl;
+    logDebug() << "listNumber2: " << listToString(listNumber2);
 
     // task call
     const auto listSum = addTwoNumbers(listNumber1, listNumber2);
-
-    std::cout << "listSum    : ";
-    printList(listSum);
-    std::cout << std::endl;
+    logDebug() << "listSum    : " << listToString(listSum);
 
     removeList(listNumber1);
     removeList(listNumber2);
@@ -67,17 +58,19 @@ void Solution0002::removeList(ListNode* list)
     }
 }
 
-void Solution0002::printList(ListNode* list)
+std::string Solution0002::listToString(ListNode* list)
 {
-    std::cout << "[";
+    std::string out{"["};
     while (list != nullptr) {
-        std::cout << list->val;
+        out.append(std::to_string(list->val));
         if (list->next != nullptr) {
-            std::cout << ", ";
+            out.append(", ");
         }
         list = list->next;
     }
-    std::cout << "]";
+    out.append("]");
+
+    return out;
 }
 
 ListNode* Solution0002::addTwoNumbers(ListNode* l1, ListNode* l2)

@@ -49,6 +49,12 @@ public:
     void describeIssue() const override;
     void run() override;
 
+    // Debuggable
+    inline std::string buildPrefix() const override
+    {
+        return ISolution::buildPrefix() + "0006]";
+    }
+
 private:
     std::string convert(const std::string& s, const int numRows);
 };
