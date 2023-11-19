@@ -1,7 +1,5 @@
 #include "Solution0003.hpp"
 
-#include <utils/helper.hpp>
-
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -18,18 +16,18 @@ bool Solution0003::isReady() const
 
 void Solution0003::describeIssue() const
 {
-    std::cout << "[Issue 0003] Longest Substring Without Repeating Characters" << std::endl;
+    logWarn() << "Longest Substring Without Repeating Characters";
 }
 
 void Solution0003::run()
 {
     std::string checkingString{"abcabcdab"};
 
-    std::cout << "\nInput params:" << std::endl;
-    std::cout << "\t1) string : " << checkingString << std::endl;
+    logDebug() << "Input params:";
+    logDebug() << "    1) string : " << checkingString;
 
     const int maxLength = lengthOfLongestSubstring(checkingString);
-    std::cout << "The length is   : " << maxLength << std::endl;
+    logDebug() << "The length is : " << maxLength;
 }
 
 int Solution0003::lengthOfLongestSubstring(const std::string& s)

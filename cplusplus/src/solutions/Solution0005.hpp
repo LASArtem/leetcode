@@ -30,6 +30,12 @@ public:
     void describeIssue() const override;
     void run() override;
 
+    // Debuggable
+    inline std::string buildPrefix() const override
+    {
+        return ISolution::buildPrefix() + "0005]";
+    }
+
 private:
     std::string longestPalindrome(const std::string& s);
 };

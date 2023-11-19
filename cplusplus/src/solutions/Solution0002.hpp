@@ -25,26 +25,9 @@ Constraints:
 #pragma once
 
 #include "ISolution.hpp"
+#include "ListNode.hpp"
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode()
-        : val(0)
-        , next(nullptr)
-    {
-    }
-    ListNode(int x)
-        : val(x)
-        , next(nullptr)
-    {
-    }
-    ListNode(int x, ListNode* next)
-        : val(x)
-        , next(next)
-    {
-    }
-};
+#include <string>
 
 class Solution0002 : public ISolution {
 public:
@@ -55,10 +38,16 @@ public:
     void describeIssue() const override;
     void run() override;
 
+    // Debuggable
+    inline std::string buildPrefix() const override
+    {
+        return ISolution::buildPrefix() + "0002]";
+    }
+
 private:
     ListNode* createList(const int number);
     void removeList(ListNode* list);
-    void printList(ListNode* list);
+    std::string listToString(ListNode* list);
 
     // task call
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);

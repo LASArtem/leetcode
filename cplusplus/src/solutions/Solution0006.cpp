@@ -1,7 +1,5 @@
 #include "Solution0006.hpp"
 
-#include <utils/helper.hpp>
-
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -18,7 +16,7 @@ bool Solution0006::isReady() const
 
 void Solution0006::describeIssue() const
 {
-    std::cout << "[Issue 0006] Zigzag Conversion" << std::endl;
+    logWarn() << "Zigzag Conversion";
 }
 
 void Solution0006::run()
@@ -26,13 +24,13 @@ void Solution0006::run()
     const std::string checkingString{"PAYPALISHIRING"};
     const int numRows = 4;
 
-    std::cout << "\nInput params:" << std::endl;
-    std::cout << "\t1) string : " << checkingString << std::endl;
-    std::cout << "\t2) numRows: " << numRows << std::endl;
+    logDebug() << "Input params:";
+    logDebug() << "  1) string : " << checkingString;
+    logDebug() << "  2) numRows: " << numRows;
 
     const auto zigzag = convert(checkingString, numRows);
-    std::cout << "The Zigzag Conversion is: " << zigzag << std::endl;
-    std::cout << "The Zigzag is equal: " << zigzag.compare("PINALSIGYAHRPI") << std::endl;
+    logDebug() << "The Zigzag Conversion is: " << zigzag;
+    logDebug() << "The Zigzag is equal     : " << (zigzag.compare("PINALSIGYAHRPI") == 0);
 }
 
 std::string Solution0006::convert(const std::string& s, const int numRows)

@@ -1,7 +1,5 @@
 #include "Solution0005.hpp"
 
-#include <utils/helper.hpp>
-
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -18,19 +16,18 @@ bool Solution0005::isReady() const
 
 void Solution0005::describeIssue() const
 {
-    std::cout << "[Issue 0005] Longest Palindromic Substring" << std::endl;
+    logWarn() << "Longest Palindromic Substring";
 }
 
 void Solution0005::run()
 {
-    std::string checkingString{"123bbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                               "aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbb321"};
+    std::string checkingString{"123bbbbbbbbbbbbaaaaaaaaabbbbbbbbbbbbbbbbbbb321"};
 
-    std::cout << "\nInput params:" << std::endl;
-    std::cout << "\t1) string : " << checkingString << std::endl;
+    logDebug() << "Input params:";
+    logDebug() << "   1) string : " << checkingString;
 
     const auto palindrome = longestPalindrome(checkingString);
-    std::cout << "The palindrome is   : " << palindrome << std::endl;
+    logDebug() << "The palindrome is   : " << palindrome;
 }
 
 std::string Solution0005::longestPalindrome(const std::string& s)
