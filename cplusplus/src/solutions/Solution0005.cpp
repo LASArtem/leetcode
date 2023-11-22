@@ -23,11 +23,11 @@ void Solution0005::run()
 {
     std::string checkingString{"123bbbbbbbbbbbbaaaaaaaaabbbbbbbbbbbbbbbbbbb321"};
 
-    logDebug() << "Input params:";
-    logDebug() << "   1) string : " << checkingString;
+    logVerbose() << "Input params:";
+    logVerbose() << "   1) string : " << checkingString;
 
     const auto palindrome = longestPalindrome(checkingString);
-    logDebug() << "The palindrome is   : " << palindrome;
+    logWarn() << "The palindrome is   : " << palindrome;
 }
 
 std::string Solution0005::longestPalindrome(const std::string& s)
