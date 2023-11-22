@@ -25,8 +25,8 @@ void Solution0008::run()
 {
     const std::string stringNumber{"21474836460"};
 
-    logDebug() << "Input params:";
-    logDebug() << "  1) stringNumber : " << stringNumber;
+    logVerbose() << "Input params:";
+    logVerbose() << "  1) stringNumber : " << stringNumber;
 
     const auto number = myAtoi(stringNumber);
     logWarn() << "number is: " << number;
@@ -57,7 +57,7 @@ int Solution0008::myAtoi(const std::string& s)
         ++index;
     }
 
-    logVerbose() << "index: " << index << "; sign: " << sign;
+    logDebug() << "index: " << index << "; sign: " << sign;
     if (index < length) {
         int digit = s[index] - 48;
         while (digit >= 0 && digit <= 9) {

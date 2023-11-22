@@ -23,10 +23,10 @@ void Solution0007::describeIssue() const
 
 void Solution0007::run()
 {
-    const int64_t inputNumber = 1563847412;
+    const int64_t inputNumber = 1234567;
 
-    logDebug() << "Input params:";
-    logDebug() << "  1) inputNumber : " << inputNumber;
+    logVerbose() << "Input params:";
+    logVerbose() << "  1) inputNumber : " << inputNumber;
 
     const auto reversedNumber = reverse(inputNumber);
     logWarn() << "reversedNumber is: " << reversedNumber;

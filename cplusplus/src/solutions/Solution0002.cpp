@@ -18,14 +18,14 @@ void Solution0002::describeIssue() const
 void Solution0002::run()
 {
     ListNode* listNumber1 = createList(9999999);
-    logDebug() << "listNumber1: " << listToString(listNumber1);
+    logVerbose() << "listNumber1: " << listToString(listNumber1);
 
     ListNode* listNumber2 = createList(9999);
-    logDebug() << "listNumber2: " << listToString(listNumber2);
+    logVerbose() << "listNumber2: " << listToString(listNumber2);
 
     // task call
     const auto listSum = addTwoNumbers(listNumber1, listNumber2);
-    logDebug() << "listSum    : " << listToString(listSum);
+    logWarn() << "listSum    : " << listToString(listSum);
 
     removeList(listNumber1);
     removeList(listNumber2);

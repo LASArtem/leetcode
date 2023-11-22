@@ -23,13 +23,13 @@ void Solution1535::run()
     std::vector<int> arr{1, 11, 22, 33, 44, 55, 66, 77, 88, 99};
     const int expectedWins = 1000;
 
-    logDebug() << "Input params:";
-    logDebug() << "     1) arr : " << arr;
-    logDebug() << "     2) wins: " << expectedWins;
+    logVerbose() << "Input params:";
+    logVerbose() << "     1) arr : " << arr;
+    logVerbose() << "     2) wins: " << expectedWins;
 
     const int winner = getWinner(arr, expectedWins);
 
-    logDebug() << "The winner is: " << winner;
+    logWarn() << "The winner is: " << winner;
 }
 
 int Solution1535::getWinner(std::vector<int>& arr, int k) const
@@ -48,7 +48,7 @@ int Solution1535::getWinner(std::vector<int>& arr, int k) const
         moveSecondToEnd(participants);
     } while (winCounter != k);
 
-    logVerbose() << "winCounter=" << winCounter;
+    logDebug() << "winCounter=" << winCounter;
     return participants.front();
 }
 

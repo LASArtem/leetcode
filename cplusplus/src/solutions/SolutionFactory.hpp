@@ -15,7 +15,9 @@ public:
     // Debuggable
     inline std::string buildPrefix() const override
     {
-        return "SolFactory";
+        std::stringstream stream;
+        stream << "[SF_" << this << "]";
+        return stream.str();
     }
 
     std::shared_ptr<ISolution> createSolution(const uint32_t taskNumber);

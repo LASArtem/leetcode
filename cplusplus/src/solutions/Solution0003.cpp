@@ -23,11 +23,11 @@ void Solution0003::run()
 {
     std::string checkingString{"abcabcdab"};
 
-    logDebug() << "Input params:";
-    logDebug() << "    1) string : " << checkingString;
+    logVerbose() << "Input params:";
+    logVerbose() << "    1) string : " << checkingString;
 
     const int maxLength = lengthOfLongestSubstring(checkingString);
-    logDebug() << "The length is : " << maxLength;
+    logWarn() << "The length is : " << maxLength;
 }
 
 int Solution0003::lengthOfLongestSubstring(const std::string& s)

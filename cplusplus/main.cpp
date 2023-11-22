@@ -9,8 +9,8 @@ int main(int argc, char** argv)
 {
     if (argc == 2) {
         const uint32_t taskNumber = std::atoi(argv[1]);
-        SolutionFactory factory{};
-        const auto solution = factory.createSolution(taskNumber);
+        auto factory = std::make_shared<SolutionFactory>();
+        const auto solution = factory->createSolution(taskNumber);
 
         if (solution->isReady()) {
             solution->describeIssue();

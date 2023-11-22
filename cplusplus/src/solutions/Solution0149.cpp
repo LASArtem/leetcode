@@ -23,11 +23,11 @@ void Solution0149::run()
 {
     std::vector<std::vector<int>> points{{4, 5}, {4, -1}, {4, 0}};
 
-    logDebug() << "Input params:";
-    logDebug() << "      points: " << points;
+    logVerbose() << "Input params:";
+    logVerbose() << "      points: " << points;
 
     const int pointNumberAtLine = maxPoints(points);
-    logDebug() << "pointNumberAtLine: " << pointNumberAtLine;
+    logWarn() << "pointNumberAtLine: " << pointNumberAtLine;
 }
 
 int Solution0149::maxPoints(std::vector<std::vector<int>>& points)

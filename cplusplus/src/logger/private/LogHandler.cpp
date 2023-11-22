@@ -45,6 +45,8 @@ void LogHandler::log(const eLogLevel& level, const std::string& prefix, const st
 
     switch (level) {
     case eLogLevel::logVerbose:
+        color = GREEN;
+        break;
     case eLogLevel::logDebug:
         color = RESET;
         break;

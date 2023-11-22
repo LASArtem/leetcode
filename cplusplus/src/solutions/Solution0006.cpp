@@ -24,13 +24,13 @@ void Solution0006::run()
     const std::string checkingString{"PAYPALISHIRING"};
     const int numRows = 4;
 
-    logDebug() << "Input params:";
-    logDebug() << "  1) string : " << checkingString;
-    logDebug() << "  2) numRows: " << numRows;
+    logVerbose() << "Input params:";
+    logVerbose() << "  1) string : " << checkingString;
+    logVerbose() << "  2) numRows: " << numRows;
 
     const auto zigzag = convert(checkingString, numRows);
-    logDebug() << "The Zigzag Conversion is: " << zigzag;
-    logDebug() << "The Zigzag is equal     : " << (zigzag.compare("PINALSIGYAHRPI") == 0);
+    logWarn() << "The Zigzag Conversion is: " << zigzag;
+    logVerbose() << "The Zigzag is equal     : " << (zigzag.compare("PINALSIGYAHRPI") == 0);
 }
 
 std::string Solution0006::convert(const std::string& s, const int numRows)
