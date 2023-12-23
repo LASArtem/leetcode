@@ -19,15 +19,15 @@ void Solution2961::describeIssue() const
 
 void Solution2961::run()
 {
-    std::vector<std::vector<int>> variables{{999, 999, 999, 999}};
-    int target = 297;
+    std::vector<std::vector<int>> variables{{4, 4, 3, 2}};
+    int target = 1;
 
     logVerbose() << "Input params:";
     logVerbose() << "    1) variables : " << variables;
     logVerbose() << "    2) target    : " << target;
 
     // task call
-    const auto correctIndexes = getGoodIndices(variables, target);
+    const auto correctIndexes = getGoodIndices2(variables, target);
     logWarn() << "correctIndexes: " << correctIndexes;
 }
 
@@ -151,4 +151,35 @@ int Solution2961::powWithModule(const int base, int degree, const int module)
     } while (--degree != 0);
 
     return result;
+}
+
+// recurcive solution:
+std::vector<int> Solution2961::getGoodIndices2(std::vector<std::vector<int>>& variables, int target)
+{
+    std::list<int> correctIndexes;
+    int index = 0;
+
+    do {
+        const auto& module_a = variables[index][0] % 10;
+        const auto usefullDegree_b = variables[index][1] % 4 == 0 ? 4 : variables[index][1] % 4;
+        const auto& c = variables[index][2];
+        const auto& m = variables[index][3];
+
+        const auto firstBracket = powerRecurcive(module_a, usefullDegree_b, 10);
+        if (target == powerRecurcive(firstBracket, c, m)) {
+            correctIndexes.push_back(index);
+        }
+    } while (++index < variables.size());
+
+    return std::vector<int>{correctIndexes.begin(), correctIndexes.end()};
+}
+
+int Solution2961::powerRecurcive(const int a, const int b, const int m)
+{
+    if (b == 0) {
+        return 1;
+    }
+
+    int tmp = powerRecurcive(a, b / 2, m);
+    return tmp * tmp * (b & 1 ? a : 1) % m;
 }
