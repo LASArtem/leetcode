@@ -57,4 +57,8 @@ private:
 
     int getFirstBracketValue(const int& module_a, const int& usefullDegree_b);
     int powWithModule(const int base, int degree, const int module);
+
+    // recurcive solution:
+    std::vector<int> getGoodIndices2(std::vector<std::vector<int>>& variables, int target);
+    int powerRecurcive(const int a, const int b, const int m);
 };
