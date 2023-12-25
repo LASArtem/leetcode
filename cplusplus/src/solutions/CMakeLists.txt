@@ -11,6 +11,7 @@ set(RELEASE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution0149.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution1535.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution2956.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Solution2957.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Solution2961.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/SolutionDefault.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/SolutionFactory.cpp
