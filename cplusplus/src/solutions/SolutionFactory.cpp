@@ -11,6 +11,7 @@
 #include "Solution1535.hpp"
 #include "Solution2956.hpp"
 #include "Solution2957.hpp"
+#include "Solution2958.hpp"
 #include "Solution2961.hpp"
 #include "SolutionDefault.hpp"
 
@@ -50,6 +51,9 @@ std::shared_ptr<ISolution> SolutionFactory::createSolution(const uint32_t taskNu
         solution = std::make_shared<Solution2956>();
     case 2957:
         solution = std::make_shared<Solution2957>();
+        break;
+    case 2958:
+        solution = std::make_shared<Solution2958>();
         break;
     case 2961:
         solution = std::make_shared<Solution2961>();
