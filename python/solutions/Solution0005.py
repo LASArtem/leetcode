@@ -26,7 +26,7 @@ class Solution0005(ISolution):
         print("[Solution 0005]: Longest Palindromic Substring")
 
     def run(self):
-        checkingString = "123bbbbbbbbbbbbaaaaaaaaabbbbbbbbbbbbbbbbbbb321" #123321aba123ccc 123bbbbbbbbbbbbaaaaaaaaabbbbbbbbbbbbbbbbbbb321
+        checkingString = "123bbbbbbbbbbbbaaaaaaaaabbbbbbbbbbbbbbbbbbb321"
         print(f'Input params:')
         print(f'    1) string: {checkingString}')
         palindrome = self.longestPalindrome(checkingString)
