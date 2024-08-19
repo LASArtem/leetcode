@@ -8,7 +8,7 @@
 int main(int argc, char** argv)
 {
     if (argc == 2) {
-        const uint32_t taskNumber = std::atoi(argv[1]);
+        const int32_t taskNumber = std::atoi(argv[1]);
         auto factory = std::make_shared<SolutionFactory>();
         const auto solution = factory->createSolution(taskNumber);
 
@@ -16,7 +16,11 @@ int main(int argc, char** argv)
             solution->describeIssue();
             solution->run();
         } else {
-            log::logError() << "Task_" << taskNumber << " does not implemented";
+            if (taskNumber >= 0) {
+                log::logError() << "Task_" << taskNumber << " does not implemented";
+            } else {
+                log::logError() << "SpecialTask_" << -taskNumber << " does not implemented";
+            }
         }
     } else {
         log::logError() << "Incorrect input params:";
