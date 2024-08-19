@@ -20,5 +20,5 @@ public:
         return stream.str();
     }
 
-    std::shared_ptr<ISolution> createSolution(const uint32_t taskNumber);
+    std::shared_ptr<ISolution> createSolution(const int32_t taskNumber);
 };

@@ -13,12 +13,13 @@
 #include "Solution2957.hpp"
 #include "Solution2961.hpp"
 #include "SolutionDefault.hpp"
+#include "SpecialTask001.hpp"
 
 SolutionFactory::SolutionFactory()
 {
 }
 
-std::shared_ptr<ISolution> SolutionFactory::createSolution(const uint32_t taskNumber)
+std::shared_ptr<ISolution> SolutionFactory::createSolution(const int32_t taskNumber)
 {
     std::shared_ptr<ISolution> solution{nullptr};
     switch (taskNumber) {
@@ -53,6 +54,9 @@ std::shared_ptr<ISolution> SolutionFactory::createSolution(const uint32_t taskNu
         break;
     case 2961:
         solution = std::make_shared<Solution2961>();
+        break;
+    case -1:
+        solution = std::make_shared<SpecialTask001>();
         break;
     default:
         solution = std::make_shared<SolutionDefault>();
